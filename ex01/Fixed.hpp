@@ -14,8 +14,8 @@ class   Fixed
         Fixed(const int n);//Nouveau constructeur.
         Fixed(const float f);//Nouveau constructeur.
         Fixed(const Fixed &other);//Constructeur de copie.
-        ~Fixed();
         Fixed &operator=( const Fixed &rhs );//Opérateur d'affectation.
+        ~Fixed();
         int     getRawBits( void ) const;
         void    setRawBits( int const raw );
         float   toFloat( void ) const;

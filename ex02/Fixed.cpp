@@ -5,7 +5,7 @@ Fixed::Fixed() : _value(0)
     std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed( const int n )
+Fixed::Fixed(const int n)
 {
     std::cout << "Int constructor called" << std::endl;
     _value = n << _fractionalBits;
@@ -23,17 +23,17 @@ Fixed::Fixed(const Fixed &other)
     *this = other;
 }
 
-Fixed::~Fixed()
-{
-    std::cout << "Destructor called" << std::endl;
-}
-
 Fixed &Fixed::operator=(const Fixed &rhs)//Opérateur d’affectation.
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &rhs)
         _value = rhs.getRawBits();
     return (*this);
+}
+
+Fixed::~Fixed()
+{
+    std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits( void ) const
@@ -104,7 +104,7 @@ Fixed Fixed::operator*(const Fixed &rhs) const
 {
     Fixed res;
     long result = (long)_value * (long)rhs._value;
-    res.setRawBits(result >> _fractionalBits);//Diviser par 256 après multiplication.
+    res.setRawBits(result >> _fractionalBits);
     return (res);
 }
 
@@ -149,7 +149,7 @@ Fixed Fixed::operator--(int)
 
 Fixed &Fixed::min(Fixed &a, Fixed &b)//Fonctions statiques.
 {
-    return (a < b) ? a : b;
+    return ((a < b) ? a : b);
 }
 
 const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
