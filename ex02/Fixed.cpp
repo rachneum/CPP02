@@ -23,7 +23,7 @@ Fixed::Fixed(const Fixed &other)
     *this = other;
 }
 
-Fixed &Fixed::operator=(const Fixed &rhs)//Opérateur d’affectation.
+Fixed& Fixed::operator=(const Fixed& rhs)//Opérateur d’affectation.
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &rhs)
@@ -56,51 +56,51 @@ int Fixed::toInt() const
     return (_value >> _fractionalBits);
 }
 
-bool Fixed::operator>(const Fixed &rhs) const//Comparaison.
+bool Fixed::operator>(const Fixed& rhs) const//Comparaison.
 {
     return (_value > rhs._value);
 }
 
-bool Fixed::operator<(const Fixed &rhs) const
+bool Fixed::operator<(const Fixed& rhs) const
 {
     return (_value < rhs._value);
 }
 
-bool Fixed::operator>=(const Fixed &rhs) const
+bool Fixed::operator>=(const Fixed& rhs) const
 {
     return (_value >= rhs._value);
 }
 
-bool Fixed::operator<=(const Fixed &rhs) const
+bool Fixed::operator<=(const Fixed& rhs) const
 {
     return (_value <= rhs._value);
 }
 
-bool Fixed::operator==(const Fixed &rhs) const
+bool Fixed::operator==(const Fixed& rhs) const
 {
     return (_value == rhs._value);
 }
 
-bool Fixed::operator!=(const Fixed &rhs) const
+bool Fixed::operator!=(const Fixed& rhs) const
 {
     return (_value != rhs._value);
 }
 
-Fixed Fixed::operator+(const Fixed &rhs) const//Arithmétique.
+Fixed Fixed::operator+(const Fixed& rhs) const//Arithmétique.
 {
     Fixed res;
     res.setRawBits(this->_value + rhs._value);
     return (res);
 }
 
-Fixed Fixed::operator-(const Fixed &rhs) const
+Fixed Fixed::operator-(const Fixed& rhs) const
 {
     Fixed res;
     res.setRawBits(this->_value - rhs._value);
     return (res);
 }
 
-Fixed Fixed::operator*(const Fixed &rhs) const
+Fixed Fixed::operator*(const Fixed& rhs) const
 {
     Fixed res;
     long result = (long)_value * (long)rhs._value;
@@ -108,7 +108,7 @@ Fixed Fixed::operator*(const Fixed &rhs) const
     return (res);
 }
 
-Fixed Fixed::operator/(const Fixed &rhs) const
+Fixed Fixed::operator/(const Fixed& rhs) const
 {
     if (rhs._value == 0)
     {
@@ -121,7 +121,7 @@ Fixed Fixed::operator/(const Fixed &rhs) const
     return (res);
 }
 
-Fixed &Fixed::operator++()//Incrémentation/Décrémentation.
+Fixed& Fixed::operator++()//Incrémentation/Décrémentation.
 {
     _value += 1;
     return (*this);
@@ -134,7 +134,7 @@ Fixed Fixed::operator++(int)
     return (tmp);
 }
 
-Fixed &Fixed::operator--()
+Fixed& Fixed::operator--()
 {
     _value -= 1;
     return (*this);
@@ -147,27 +147,27 @@ Fixed Fixed::operator--(int)
     return (tmp);
 }
 
-Fixed &Fixed::min(Fixed &a, Fixed &b)//Fonctions statiques.
+Fixed& Fixed::min(Fixed& a, Fixed& b)//Fonctions statiques.
 {
     return ((a < b) ? a : b);
 }
 
-const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
 {
     return ((a < b) ? a : b);
 }
 
-Fixed &Fixed::max(Fixed &a, Fixed &b)
+Fixed& Fixed::max(Fixed& a, Fixed& b)
 {
     return ((a > b) ? a : b);
 }
 
-const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
 {
     return ((a > b) ? a : b);
 }
 
-std::ostream &operator<<(std::ostream &out, const Fixed &f)//Surcharge <<.
+std::ostream& operator<<(std::ostream& out, const Fixed& f)//Surcharge <<.
 {
     out << f.toFloat();
     return (out);

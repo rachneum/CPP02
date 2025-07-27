@@ -5,14 +5,14 @@ Fixed::Fixed() : _value(0)
     std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &other)
+Fixed::Fixed(const Fixed& other)
 {
     std::cout << "Copy constructor called" << std::endl;
     //this est un pointeur automatique que cpp me donne toujours dans toutes mes fonctions membres non statiques.
     *this = other;//J'appelle l'opérateur =.
 }
 
-Fixed &Fixed::operator=(const Fixed &rhs)
+Fixed& Fixed::operator=(const Fixed& rhs)
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &rhs)

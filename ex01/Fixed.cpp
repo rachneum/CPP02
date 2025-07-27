@@ -17,13 +17,13 @@ Fixed::Fixed(const float f)
     _value = roundf(f * (1 << _fractionalBits));//Me sert de 1 pour << car je ne peux pas le faire avec des float.
 }   //roundf va arrondir mon resultat.
 
-Fixed::Fixed(const Fixed &other)
+Fixed::Fixed(const Fixed& other)
 {
     std::cout << "Copy constructor called" << std::endl;
     *this = other;//Utilise l'opérateur =.
 }
 
-Fixed &Fixed::operator=( const Fixed &rhs )
+Fixed& Fixed::operator=( const Fixed& rhs )
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &rhs)
@@ -57,7 +57,7 @@ int Fixed::toInt() const
     return (_value >> _fractionalBits);
 }
 //Utilisation de toFloat() car _value est un int interne, donc illisible directement.
-std::ostream &operator<<(std::ostream &out, const Fixed &f)//Surcharge de l'opérateur <<.
+std::ostream& operator<<(std::ostream& out, const Fixed& f)//Surcharge de l'opérateur <<.
 {
     out << f.toFloat();//Appelle la méthode pour afficher la vraie valeur flottante.
     return (out);//Permet l’enchaînement : std::cout << a << b << c;
