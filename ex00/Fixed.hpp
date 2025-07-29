@@ -3,10 +3,11 @@
 
 # include <iostream>
 
-class Fixed {
+class Fixed
+{
     private:
-        int _value;
-        static const int _fractionalBits = 8;//Nombre de bits pour la partie fractionnaire.
+        int             _value;
+        static const    int _fractionalBits = 8;//Nombre de bits pour la partie fractionnaire.
     
     public:
         Fixed();//Constructeur par défaut.
@@ -15,6 +16,6 @@ class Fixed {
         ~Fixed();
         int     getRawBits( void ) const;//Retourne la valeur brute. Valeur brute = l'entier interne que la classe fixed utilise pour stocker un nombre fixe.
         void    setRawBits( int const raw );//Définit la valeur brute.
-    };
+};
 
 #endif
