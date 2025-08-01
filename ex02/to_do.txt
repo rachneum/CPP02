@@ -1,0 +1,34 @@
+    Fixed&  operator++();
+    Fixed&  operator--();
+-> Ici, pas de paramètre, retourne référence à l'objet modifié.
+ex:
+Fixed a(5);
+Fixed b = ++a; //a vaut 6, b vaut 6 (référence renvoyée).
+________
+    Fixed   operator++(int);
+    Fixed   operator--(int);
+-> Ici, il y a un int "fantôme" pour différencier la surcharge de la version post-incrémentation.
+-> a++; retourne la valeur originale de a, puis incrémente a.
+ex:
+Fixed a(5);
+Fixed c = a++; //c vaut 6 (ancienne valeur), a vaut 7 après
+_________________________
+pour: Fixed Fixed::operator*(const Fixed& rhs) const
+ex:
+a = 1.5  et  b = 2.0
+suite à mes fonction fixed int ou float:
+a = 1.5 * 256 = 384  et  b = 2.0 * 256 = 512
+donc je fais ma fonction afin de multiplier
+384 * 512 = 196608        result = 196608/256 = 768      768/256 = 3.0
+_________________________
+ex pour ma fonction division:
+Imaginons que j'ai :
+
+Numérateur = 384 (fixe, correspond à 1.5).
+Dénominateur = 512 (fixe, correspond à 2.0).
+
+Si je divise directement: 384 / 512 = 0 (entier).
+Si je fais 384 * 256 / 512 = 192, et 192 représente 192/256 = 0.75 → la vraie division.
+Mais si tu fais (384 * 256) / (512 * 256) → c’est la même chose que 384/512, donc je perds ma précision.
+_________________________
+
