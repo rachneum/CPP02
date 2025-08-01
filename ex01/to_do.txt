@@ -1,0 +1,12 @@
+Dans ma fonction opérateur d'affectation, je return *this car:
+-> this est un pointeur vers l'objet qu’on est en train de modifier.
+-> *this est une référence vers l'objet lui-même.
+-> Je retourne l'objet modifié pour qu’il puisse être réutilisé dans une autre affectation.
+________________________
+std::ostream& operator<<(std::ostream& out, const Fixed& f);
+
+
+Ju dois déclarer cette fonction dans mon .hpp pour que le compilateur sache qu'elle existe, sinon:
+-> Le main.cpp qui fait std::cout << a; ne compile pas.
+-> Le compilateur dirait : “je ne sais pas afficher un Fixed avec <<”.
+________________________

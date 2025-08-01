@@ -20,7 +20,7 @@ Fixed::Fixed(const float f)
 Fixed::Fixed(const Fixed& other)
 {
     std::cout << "Copy constructor called" << std::endl;
-    *this = other;//Utilise l'opérateur =.
+    *this = other;
 }
 
 Fixed& Fixed::operator=( const Fixed& rhs )
@@ -57,8 +57,8 @@ int Fixed::toInt() const
     return (_value >> _fractionalBits);
 }
 //Utilisation de toFloat() car _value est un int interne, donc illisible directement.
-std::ostream& operator<<(std::ostream& out, const Fixed& f)//Surcharge de l'opérateur <<.
+std::ostream& operator<<(std::ostream& out, const Fixed& f)
 {
-    out << f.toFloat();//Appelle la méthode pour afficher la vraie valeur flottante.
-    return (out);//Permet l’enchaînement : std::cout << a << b << c;
+    out << f.toFloat();//Convertit en float avant d'afficher.
+    return (out);//Permet d'enchaîner les <<.
 }

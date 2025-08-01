@@ -11,10 +11,12 @@ class   Fixed
         static const int    _fractionalBits = 8;
     public:
         Fixed();
-        Fixed(const int n);//Nouveau constructeur.
-        Fixed(const float f);//Nouveau constructeur.
-        Fixed(const Fixed& other);//Constructeur de copie.
-        Fixed& operator=( const Fixed& rhs );//Opérateur d'affectation.
+        /*Nouveaux constructeurs*/
+        Fixed(const int n);
+        Fixed(const float f);
+
+        Fixed(const Fixed& other);
+        Fixed& operator=( const Fixed& rhs );
         ~Fixed();
         int     getRawBits( void ) const;
         void    setRawBits( int const raw );
@@ -22,6 +24,6 @@ class   Fixed
         int     toInt( void ) const;
 };
 
-std::ostream& operator<<(std::ostream& out, const Fixed& f);//Opérateur << à l’extérieur de la classe.
+std::ostream& operator<<(std::ostream& out, const Fixed& f);
 
 #endif
