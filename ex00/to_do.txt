@@ -1,15 +1,18 @@
-Me permet d'apprendre:
--> Écrire une classe bien structurée en C++
--> Appliquer la Orthodox Canonical Form
--> Comprendre comment représenter une structure de donnée numérique différente
--> Apprendre les bases du calcul bas niveau (bit, précision, binaire)
-
-
-____________________________________
 Orthodox canonical form = ensemble de 4 fonctions d'une classe cpp: contructeur par défaut, constrcteur de copie, opérateur d'affectation et destructeur.
-
+________________________
+Constructeur de copie pareil que 
 Opérateur d'affectation = le fait de copier le contenu d'un objet dans un autre avec un =.
 
+operator=  lorsqu'unn objet est déjà existant.
+
+copie  lorsqu'on crée un nouvel objet.
+
+ex:
+MaClasse a;         // objet original
+MaClasse b = a;     // constructeur de copie
+MaClasse c(a);      // constructeur de copie
+
+________________________
 Fixed-point numbers =
 (J'utilise fixedpoint qd float est trop imprécis ou trop lent.)
 ->  float = ex: 3.14159
@@ -18,6 +21,35 @@ fixed-point = un entier mais avec une virgule fixée qlqpart.
 ex:     je veux stocker 3.25, je vais décaler la vigle en faisant x 100. (3.25x100 = 325).
         je stock 325 dans n entier (int).
         lorsque je veux l'afficher je divise par 100.
-
+________________________
 Dans cet exercice fractional bits = 8 signifique qe je dois choisir une précision fixe de 8 bits pour la partie décimale.
 Fractional bits = combien de bits sont utilisés pour la fraction du nombre (partie apres la virgule).
+________________________
+Ici je ne me sers pas de ma fonction setRawBits() mais elle me permet de modifier manuellement une valeur.
+ex:
+Fixed a;
+a.setRawBits(42);
+std::cout << a.getRawBits() << std::endl; // afficherait 42
+________________________
+
+| Étape | Action                                            |
+| ----- | ------------------------------------------------- |
+| 1     | `a` → constructeur par défaut                     |
+| 2     | `b` → constructeur de copie                       |
+| 3     |  → dedans : appel à `operator=` (`*this = other`) |
+| 4     |   → dedans : appel à `getRawBits()`               |
+| 5     | `c` → constructeur par défaut                     |
+| 6     | `c = b;` → appel à `operator=`                    |
+| 7     |  → dedans : appel à `getRawBits()`                |
+| 8     | `a.getRawBits()` → appel à `getRawBits()`         |
+| 9     | affichage de `a._value` (0)                       |
+| 10    | `b.getRawBits()` → appel à `getRawBits()`         |
+| 11    | affichage de `b._value` (0)                       |
+| 12    | `c.getRawBits()` → appel à `getRawBits()`         |
+| 13    | affichage de `c._value` (0)                       |
+| 14    | Fin du programme → destruction de `c`             |
+| 15    | → appel au destructeur                            |
+| 16    | Destruction de `b`                                |
+| 17    | → appel au destructeur                            |
+| 18    | Destruction de `a`                                |
+| 19    | → appel au destructeur                            |

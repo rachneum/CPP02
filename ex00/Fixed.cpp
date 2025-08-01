@@ -9,7 +9,7 @@ Fixed::Fixed(const Fixed& other)
 {
     std::cout << "Copy constructor called" << std::endl;
     //this est un pointeur automatique que cpp me donne toujours dans toutes mes fonctions membres non statiques.
-    *this = other;//J'appelle l'opérateur =.
+    *this = other;
 }
 
 Fixed& Fixed::operator=(const Fixed& rhs)
